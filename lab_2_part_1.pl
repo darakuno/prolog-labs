@@ -1,4 +1,4 @@
-    union1([], L, L).
+union1([], L, L).
 
 union1([X|Xs],Z,Ys) :-
     member(X, Z),!,

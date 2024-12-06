@@ -36,7 +36,7 @@ merge_sim_diff(X, [], X).
 merge_sim_diff([X|Xs], [Y|Ys], Zs):-
     X = Y, !,
     merge_sim_diff(Xs, Ys, Zs).
-      X < Y, !,
+    X < Y, !,
     merge_sim_diff(Xs, [Y|Ys], Zs).
 merge_sim_diff([X|Xs], [Y|Ys], [Y|Zs]):-
     merge_sim_diff([X|Xs],Ys,Zs).
