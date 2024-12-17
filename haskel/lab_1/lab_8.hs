@@ -16,7 +16,7 @@ mergeInter (x:xs) (y:ys)
 
 mergeDiff :: Ord a => [a] -> [a] -> [a]
 mergeDiff [] y = []
-mergeDiff x [] = []
+mergeDiff x [] = x
 mergeDiff (x:xs) (y:ys)
     | x == y = mergeDiff xs ys
     | x < y = x : mergeDiff xs (y:ys)

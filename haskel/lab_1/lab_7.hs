@@ -14,15 +14,14 @@ treeRemove Empty _ = Empty
 treeRemove (Node left x right) k  
     | k > x = Node left x (treeRemove right k)
     | k < x = Node (treeRemove left k) x right
-    | otherwise = 
-        if (left == Empty) && (right == Empty)  
-            then Empty  
-        else if (left /= Empty) && (right /= Empty)
-            then Node left (treeMin right) (treeRemove right (treeMin right)) 
-        else if (right == Empty) 
-            then left  
-        else 
-            right
+    | otherwise = nodeRemove (Node left x right)
+    
+nodeRemove :: (Ord a) => BiTree a -> BiTree a
+nodeRemove (Node left x right)
+    | left == Empty && right == Empty = Empty
+    | left /= Empty && right /= Empty = Node left (treeMin right) (treeRemove right (treeMin right)) 
+    | left == Empty = right
+    | otherwise = left
 
 treeMin :: BiTree a -> a
 treeMin (Node Empty x _) = x
